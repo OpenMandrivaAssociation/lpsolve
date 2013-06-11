@@ -6,6 +6,7 @@ Group:		System/Libraries
 License:	LGPLv2+
 Url:		http://sourceforge.net/projects/lpsolve
 Source0:	http://downloads.sourceforge.net/lpsolve/lp_solve_%{version}_source.tar.gz
+Source100:	lpsolve.rpmlintrc
 Patch0:		lpsolve-5.5.0.11.cflags.patch
 
 %description
@@ -42,7 +43,7 @@ install -p -m 644 \
 
 %files
 %{_bindir}/lp_solve
-%{_libdir}/*.so
+%{_libdir}/liblpsolve55.so
 
 %files devel
 %doc README.txt ./bfp/bfp_LUSOL/LUSOL/LUSOL_LGPL.txt ./bfp/bfp_LUSOL/LUSOL/LUSOL_README.txt ./bfp/bfp_LUSOL/LUSOL/LUSOL-overview.txt
