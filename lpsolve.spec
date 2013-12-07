@@ -1,7 +1,7 @@
 Summary:	A Mixed Integer Linear Programming (MILP) solver
 Name:		lpsolve
 Version:	5.5.2.0
-Release:	3
+Release:	4
 Group:		System/Libraries 
 License:	LGPLv2+
 Url:		http://sourceforge.net/projects/lpsolve
