@@ -26,6 +26,7 @@ Includes and definitions for developing with lpsolve
 %apply_patches
 
 %build
+export c=%{__cc}
 cd lpsolve55
 sh -x ccc
 rm bin/ux*/liblpsolve55.a
