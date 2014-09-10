@@ -27,7 +27,7 @@ Includes and definitions for developing with lpsolve
 
 %build
 export c=%{__cc}
-sed -i 's!c=cc!c=%{__cc}!g' lpsolve55/ccc
+sed -i 's!c=cc!c=%{__cc}!g' lpsolve55/ccc lp_solve/ccc
 cd lpsolve55
 sh -x ccc
 rm bin/ux*/liblpsolve55.a
