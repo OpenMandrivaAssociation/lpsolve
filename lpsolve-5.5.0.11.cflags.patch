@@ -1,19 +1,14 @@
-diff -ru lp_solve_5.5.orig/lp_solve/ccc lp_solve_5.5/lp_solve/ccc
---- lp_solve_5.5.orig/lp_solve/ccc	2009-02-23 16:31:18.000000000 +0000
-+++ lp_solve_5.5/lp_solve/ccc	2009-02-23 16:31:29.000000000 +0000
-@@ -28,7 +28,7 @@
- fi
- rm /tmp/isnan.c /tmp/isnan >/dev/null 2>&1
+--- lp_solve_5.5/lpsolve55/ccc.0000~	2009-03-25 01:27:18.000000000 +0100
++++ lp_solve_5.5/lpsolve55/ccc	2015-07-20 12:18:53.380446332 +0200
+@@ -1,6 +1,6 @@
+ :
+ src='../lp_MDO.c ../shared/commonlib.c ../shared/mmio.c ../shared/myblas.c ../ini.c ../fortify.c ../colamd/colamd.c ../lp_rlp.c ../lp_crash.c ../bfp/bfp_LUSOL/lp_LUSOL.c ../bfp/bfp_LUSOL/LUSOL/lusol.c ../lp_Hash.c ../lp_lib.c ../lp_wlp.c ../lp_matrix.c ../lp_mipbb.c ../lp_MPS.c ../lp_params.c ../lp_presolve.c ../lp_price.c ../lp_pricePSE.c ../lp_report.c ../lp_scale.c ../lp_simplex.c ../lp_SOS.c ../lp_utils.c ../yacc_read.c'
+-c=cc
++c=/usr/bin/clang
  
--opts='-O3'
-+opts=$RPM_OPT_FLAGS
- 
- def=
- if [ "$PLATFORM" = "SCO_UNIX" ]
-diff -ru lp_solve_5.5.orig/lpsolve55/ccc lp_solve_5.5/lpsolve55/ccc
---- lp_solve_5.5.orig/lpsolve55/ccc	2009-02-23 16:31:18.000000000 +0000
-+++ lp_solve_5.5/lpsolve55/ccc	2009-02-23 16:31:29.000000000 +0000
-@@ -35,7 +35,7 @@
+ #determine platform (32/64 bit)
+ >/tmp/platform.c
+@@ -35,7 +35,7 @@ else dl=-ldl
       so=y
  fi
  
@@ -22,3 +17,31 @@ diff -ru lp_solve_5.5.orig/lpsolve55/ccc lp_solve_5.5/lpsolve55/ccc
  
  $c -s -c -I.. -I../shared -I../bfp -I../bfp/bfp_LUSOL -I../bfp/bfp_LUSOL/LUSOL -I../colamd $opts $def $NOISNAN -DYY_NEVER_INTERACTIVE -DPARSER_LP -DINVERSE_ACTIVE=INVERSE_LUSOL -DRoleIsExternalInvEngine $src
  ar rv bin/$PLATFORM/liblpsolve55.a `echo $src|sed s/[.]c/.o/g|sed 's/[^ ]*\///g'`
+@@ -44,7 +44,7 @@ ranlib bin/$PLATFORM/liblpsolve55.a
+ if [ "$so" != "" ]
+ then
+   $c -fpic -s -c -I.. -I../shared -I../bfp -I../bfp/bfp_LUSOL -I../bfp/bfp_LUSOL/LUSOL -I../colamd -I. $opts $NOISNAN -DYY_NEVER_INTERACTIVE -DPARSER_LP -DINVERSE_ACTIVE=INVERSE_LUSOL -DRoleIsExternalInvEngine $src
+-  $c -shared -Wl,-Bsymbolic -Wl,-soname,liblpsolve55.so -o bin/$PLATFORM/liblpsolve55.so `echo $src|sed s/[.]c/.o/g|sed 's/[^ ]*\///g'` -lc -lm -ldl
++  $c $opts -shared -Wl,-Bsymbolic -Wl,-soname,liblpsolve55.so -o bin/$PLATFORM/liblpsolve55.so `echo $src|sed s/[.]c/.o/g|sed 's/[^ ]*\///g'` -lc -lm -ldl
+ fi
+ 
+ rm *.o 2>/dev/null
+--- lp_solve_5.5/lp_solve/ccc.0000~	2009-01-25 19:39:03.000000000 +0100
++++ lp_solve_5.5/lp_solve/ccc	2015-07-20 12:15:22.078317181 +0200
+@@ -1,6 +1,6 @@
+ :
+ src='../lp_MDO.c ../shared/commonlib.c ../colamd/colamd.c ../shared/mmio.c ../shared/myblas.c ../ini.c ../fortify.c ../lp_rlp.c ../lp_crash.c ../bfp/bfp_LUSOL/lp_LUSOL.c ../bfp/bfp_LUSOL/LUSOL/lusol.c ../lp_Hash.c ../lp_lib.c ../lp_wlp.c ../lp_matrix.c ../lp_mipbb.c ../lp_MPS.c ../lp_params.c ../lp_presolve.c ../lp_price.c ../lp_pricePSE.c ../lp_report.c ../lp_scale.c ../lp_simplex.c lp_solve.c ../lp_SOS.c ../lp_utils.c ../yacc_read.c'
+-c=cc
++c=/usr/bin/clang
+ 
+ #determine platform (32/64 bit)
+ >/tmp/platform.c
+@@ -28,7 +28,7 @@ else NOISNAN=-DNOISNAN
+ fi
+ rm /tmp/isnan.c /tmp/isnan >/dev/null 2>&1
+ 
+-opts='-O3'
++opts=$RPM_OPT_FLAGS
+ 
+ def=
+ if [ "$PLATFORM" = "SCO_UNIX" ]

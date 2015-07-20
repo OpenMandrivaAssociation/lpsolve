@@ -1,7 +1,10 @@
+# ld: ../lib/CodeGen/LexicalScopes.cpp:160: llvm::LexicalScope *llvm::LexicalScopes::getOrCreateRegularScope(const llvm::DILocalScope *): Assertion `cast<DISubprogram>(Scope)->describes(MF->getFunction())' failed.
+%define _disable_lto 1
+
 Summary:	A Mixed Integer Linear Programming (MILP) solver
 Name:		lpsolve
 Version:	5.5.2.0
-Release:	9
+Release:	10
 Group:		System/Libraries 
 License:	LGPLv2+
 Url:		http://sourceforge.net/projects/lpsolve
