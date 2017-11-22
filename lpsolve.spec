@@ -3,8 +3,8 @@
 
 Summary:	A Mixed Integer Linear Programming (MILP) solver
 Name:		lpsolve
-Version:	5.5.2.0
-Release:	12
+Version:	5.5.2.5
+Release:	1
 Group:		System/Libraries 
 License:	LGPLv2+
 Url:		http://sourceforge.net/projects/lpsolve
@@ -30,7 +30,7 @@ Includes and definitions for developing with lpsolve
 
 %build
 export c=%{__cc}
-sed -i 's!c=cc!c=%{__cc}!g' lpsolve55/ccc lp_solve/ccc
+sed -i "s!^c=.*!c=$c!g" lpsolve55/ccc lp_solve/ccc
 cd lpsolve55
 sh -x ccc
 rm bin/ux*/liblpsolve55.a
