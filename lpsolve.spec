@@ -7,7 +7,7 @@ Version:	5.5.2.5
 Release:	5
 Group:		System/Libraries 
 License:	LGPLv2+
-Url:		http://sourceforge.net/projects/lpsolve
+Url:		https://sourceforge.net/projects/lpsolve
 Source0:	http://downloads.sourceforge.net/lpsolve/lp_solve_%{version}_source.tar.gz
 Source100:	lpsolve.rpmlintrc
 Patch0:		lpsolve-5.5.0.11.cflags.patch
